@@ -4,8 +4,9 @@
 # Ignore virtualenv
 venv
 
-# Ignore *.pyc
+# Ignore pycache
 *.pyc
+/__pycache__/
 
 # Ignore database file
 db.sqlite3
