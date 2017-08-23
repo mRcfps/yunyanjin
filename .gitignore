@@ -6,3 +6,6 @@ venv
 
 # Ignore *.pyc
 *.pyc
+
+# Ignore database file
+db.sqlite3
