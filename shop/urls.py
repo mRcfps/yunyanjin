@@ -18,4 +18,9 @@ urlpatterns = [
         views.ProductItemsView.as_view(),
         name='product-items'
     ),
+    url(
+        r'^add-to-cart$',
+        views.AddToCartView.as_view(),
+        name='add-to-cart'
+    ),
 ]

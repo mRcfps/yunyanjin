@@ -1,9 +1,12 @@
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from shop.models import Product, Photo, Item
 from shop.serializers import (ProductDetailSerializer,
                               ProductPhotoSerializer,
                               ItemSerializer)
+from cart.models import CartItem
 
 
 class ProductDetailView(generics.RetrieveAPIView):
@@ -28,3 +31,16 @@ class ProductItemsView(generics.ListAPIView):
     def get_queryset(self):
         product = Product.objects.get(id=self.kwargs['pk'])
         return product.items.all()
+
+
+class AddToCartView(APIView):
+
+    def post(self, request):
+        item = Item.objects.get(id=request.data['item'])
+        CartItem.objects.create(
+            cart=request.user.cart,
+            item=item,
+            quantity=request.data['quantity']
+        )
+
+        return Response(status=status.HTTP_201_CREATED)
