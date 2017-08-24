@@ -8,7 +8,7 @@ urlpatterns = [
         name='login'
     ),
     url(
-        r'^login/$',
+        r'^register$',
         views.UserRegistrationView.as_view(),
         name='register'
     ),

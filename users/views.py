@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -15,6 +16,7 @@ class UserLoginView(APIView):
     created and stored."""
 
     serializer_class = AuthTokenSerializer
+    permission_classes = (AllowAny,)
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -28,6 +30,7 @@ class UserRegistrationView(generics.CreateAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
 
 
 class UserChangePasswordView(generics.UpdateAPIView):
