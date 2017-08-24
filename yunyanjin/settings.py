@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # yunyanjin apps
     'users',
     'shop',
+    'cart',
 ]
 
 MIDDLEWARE = [

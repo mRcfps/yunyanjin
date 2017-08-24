@@ -40,7 +40,7 @@ class Item(models.Model):
 
     class Meta:
         ordering = ('price',)
-        verbose_name = "商品购买项目"
+        verbose_name = "购买项目"
         verbose_name_plural = verbose_name
 
     def __str__(self):
