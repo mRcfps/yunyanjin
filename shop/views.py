@@ -6,7 +6,7 @@ from shop.models import Product, Photo, Item
 from shop.serializers import (ProductDetailSerializer,
                               ProductPhotoSerializer,
                               ItemSerializer)
-from cart.models import CartItem
+from cart.models import Cart, CartItem
 
 
 class ProductDetailView(generics.RetrieveAPIView):
@@ -37,8 +37,9 @@ class AddToCartView(APIView):
 
     def post(self, request):
         item = Item.objects.get(id=request.data['item'])
+        cart, created = Cart.objects.get_or_create(user=request.user)
         CartItem.objects.create(
-            cart=request.user.cart,
+            cart=cart,
             item=item,
             quantity=request.data['quantity']
         )
