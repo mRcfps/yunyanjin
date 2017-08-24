@@ -11,3 +11,11 @@ class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
         fields = ('item', 'quantity')
+        read_only_field = ('item',)
+
+
+class CartItemEditSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CartItem
+        fields = ('quantity',)

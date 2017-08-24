@@ -7,18 +7,19 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('name', 'image', 'description', 'info', 'items')
+        fields = ('id', 'name', 'image', 'description', 'info')
 
 
 class ProductPhotoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Photo
-        fields = ('product', 'photo')
+        fields = ('id', 'image')
 
 
 class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('product', 'price', 'unit', 'stock')
+        fields = ('id', 'product', 'price', 'description',
+                  'unit', 'stock')
