@@ -13,7 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
 
-    list_display = ('product', 'price', 'unit', 'stock')
+    list_display = ('product', 'description', 'price', 'unit', 'stock')
 
 
 admin.site.register(Product, ProductAdmin)
