@@ -24,6 +24,12 @@ class UserLoginView(APIView):
         return Response({'username': user.username, 'token': token.key})
 
 
+class UserRegistrationView(generics.CreateAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class UserChangePasswordView(generics.UpdateAPIView):
     """Allow users to change their password with token auth."""
 
