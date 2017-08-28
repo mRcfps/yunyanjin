@@ -20,7 +20,7 @@ class Order(models.Model):
         (FINISHED, '已完成'),
     )
 
-    order_id = models.UUIDField(default=uuid.uuid4().hex,
+    order_id = models.UUIDField(primary_key=True,
                                 editable=False,
                                 verbose_name='订单编号')
     user = models.ForeignKey(User, related_name='orders', verbose_name='用户')
@@ -33,6 +33,9 @@ class Order(models.Model):
     class Meta:
         verbose_name = "订单"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return "订单" + str(self.order_id)
 
 
 class OrderItem(models.Model):
