@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -18,6 +20,9 @@ class Order(models.Model):
         (FINISHED, '已完成'),
     )
 
+    order_id = models.UUIDField(default=uuid.uuid4().hex,
+                                editable=False,
+                                verbose_name='订单编号')
     user = models.ForeignKey(User, related_name='orders', verbose_name='用户')
     status = models.CharField(max_length=1,
                               choices=STATUS_CHOICES,

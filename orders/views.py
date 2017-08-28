@@ -1,3 +1,5 @@
+import uuid
+
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,6 +15,7 @@ class NewOrderView(APIView):
 
     def post(self, request):
         order = Order.objects.create(
+            order_id=uuid.uuid4().hex,
             user=request.user,
             status=Order.UNPAID,
             destination=request.data['destination'],
