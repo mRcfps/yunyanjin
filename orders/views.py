@@ -30,7 +30,8 @@ class NewOrderView(APIView):
                 quantity=cart_item.quantity
             )
 
-        return Response({'order': order.id}, status=status.HTTP_201_CREATED)
+        return Response({'order_id': order.order_id},
+                        status=status.HTTP_201_CREATED)
 
 
 class OrderListView(generics.ListAPIView):
@@ -46,7 +47,7 @@ class PayOrderView(APIView):
     """Get an unpaid order paid."""
 
     def post(self, request):
-        order = Order.objects.get(id=request.data['order'])
+        order = Order.objects.get(id=request.data['order_id'])
 
         # Handle orders of wrong status
         if order.status != Order.UNPAID:
@@ -63,7 +64,7 @@ class CancelOrderView(APIView):
     """Cancel an unpaid order."""
 
     def post(self, request):
-        order = Order.objects.get(id=request.data['order'])
+        order = Order.objects.get(id=request.data['order_id'])
 
         # Handle orders of wrong status
         if order.status != Order.UNPAID:
@@ -79,7 +80,7 @@ class FinishOrderView(APIView):
     """Finish a paid order."""
 
     def post(self, request):
-        order = Order.objects.get(id=request.data['order'])
+        order = Order.objects.get(id=request.data['order_id'])
 
         # Handle orders of wrong status
         if order.status != Order.DISPATCHED and order.status != Order.PAID:
