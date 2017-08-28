@@ -14,6 +14,11 @@ class NewOrderView(APIView):
     """Create a new order with all items in the cart."""
 
     def post(self, request):
+        # Check if user's cart is empty
+        if request.user.cart.items.count() == 0:
+            return Response(errors.EMPTY_CART,
+                            status=status.HTTP_400_BAD_REQUEST)
+
         order = Order.objects.create(
             order_id=uuid.uuid4().hex,
             user=request.user,
