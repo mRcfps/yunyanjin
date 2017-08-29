@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 3rd-party apps
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 
     # yunyanjin apps
     'users',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,3 +157,5 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
     ),
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
