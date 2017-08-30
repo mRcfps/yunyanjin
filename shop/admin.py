@@ -23,5 +23,6 @@ admin.site.register(Item, ItemAdmin)
 # Admin site settings
 admin.site.site_header = '云梦盐津 • 后台管理'
 admin.site.site_title = '云梦盐津'
+admin.site.site_url = 'http://www.yunyanjin.com'
 admin.site.unregister(Token)
 admin.site.unregister(Group)
