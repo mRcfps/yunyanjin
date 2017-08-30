@@ -11,17 +11,34 @@
       text-align: center;
       font-family: "Source Code Pro", monospace;
     }
+
     .logo {
-      margin: 100px 0 50px 0;
+      margin: 80px 0 20px 0;
+    }
+
+    .enter {
+      display: inline-block;
+      border-radius: 10px;
+      background-color: #D0021B;
+      text-decoration: none;
+      color: white;
+      padding: 15px;
+      margin: 20px;
+      transition: box-shadow 0.3s;
+    }
+
+    .enter:hover {
+      box-shadow: 0 8px 16px rgba(208,2,27,0.3);
     }
   </style>
 </head>
 <body>
   {% load static %}
-  <div class="logo">
-    <img src="{% static 'logo.svg' %}" alt="Logo" />
+  <div>
+    <img class="logo" src="{% static 'logo.svg' %}" alt="Logo" />
   </div>
   <h1>Yunyanjin API Endpoints</h1>
   <p>Only to be consumed by authenticated clients.</p>
+  <a class="enter" href="http://api.yunyanjin.com/admin">进入后台管理 ></a>
 </body>
 </html>
