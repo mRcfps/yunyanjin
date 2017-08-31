@@ -1,14 +1,15 @@
 from django.db import models
 
-from ckeditor.fields import RichTextField
-
 
 class Product(models.Model):
 
     name = models.CharField(max_length=20, db_index=True, verbose_name='名称')
-    image = models.ImageField(upload_to='products/', blank=True, verbose_name='照片')
+    image = models.ImageField(upload_to='products/',
+                              blank=True,
+                              verbose_name='照片')
     description = models.TextField(blank=True, verbose_name='简介')
-    info = RichTextField(blank=True, verbose_name='详细信息')
+    nutrition = models.TextField(blank=True, verbose_name='营养成分')
+    effect = models.TextField(blank=True, verbose_name='用途功效')
     created = models.DateTimeField(auto_now_add=True, verbose_name='上架时间')
 
     class Meta:
