@@ -9,7 +9,8 @@
   <style>
     body {
       text-align: center;
-      font-family: "Source Code Pro", monospace;
+      font-family: "Lucida Console", Monaco, monospace;
+      color: #010101;
     }
 
     .logo {
@@ -18,17 +19,45 @@
 
     .enter {
       display: inline-block;
+      width: 150px;
       border-radius: 10px;
-      background-color: #D0021B;
+      border: 1px solid #D0021B;
+      background-color: white;
       text-decoration: none;
-      color: white;
       padding: 15px;
       margin: 20px;
-      transition: box-shadow 0.3s;
+      transition: 0.5s;
+    }
+
+    .enter span {
+      display: inline-block;
+      position: relative;
+      color: #D0021B;
+      transition: 0.5s;
+    }
+
+    .enter span::after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
     }
 
     .enter:hover {
-      box-shadow: 0 8px 16px rgba(208,2,27,0.3);
+      background-color: #D0021B;
+      box-shadow: 0 8px 16px rgba(208,2,27,0.5);
+    }
+
+    .enter:hover span {
+      padding-right: 20px;
+      color: white;
+    }
+
+    .enter:hover span::after {
+      opacity: 1;
+      right: 0;
     }
   </style>
 </head>
@@ -39,6 +68,6 @@
   </div>
   <h1>Yunyanjin API Endpoints</h1>
   <p>Only to be consumed by authenticated clients.</p>
-  <a class="enter" href="http://api.yunyanjin.com/admin">进入后台管理 ></a>
+  <a class="enter" href="http://api.yunyanjin.com/admin"><span>进入后台管理</span></a>
 </body>
 </html>
