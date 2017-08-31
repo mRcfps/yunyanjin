@@ -1,6 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 
 from shop.models import Product, Photo, Item
 from shop.serializers import (ProductDetailSerializer,
@@ -13,11 +14,13 @@ class ProductDetailView(generics.RetrieveAPIView):
 
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
+    permission_classes = (AllowAny,)
 
 
 class ProductPhotosView(generics.ListAPIView):
 
     serializer_class = ProductPhotoSerializer
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         product = Product.objects.get(id=self.kwargs['pk'])
@@ -27,6 +30,7 @@ class ProductPhotosView(generics.ListAPIView):
 class ProductItemsView(generics.ListAPIView):
 
     serializer_class = ItemSerializer
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         product = Product.objects.get(id=self.kwargs['pk'])
