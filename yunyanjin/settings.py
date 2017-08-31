@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'ckeditor',
-    'ckeditor_uploader',
 
     # yunyanjin apps
     'users',
@@ -161,22 +159,3 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-# CKEditor settings
-
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'language': 'zh-CN',
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Format', 'Styles'],
-            ['Bold', 'Italic', 'Underline', 'Strike'],
-            ['FontSize', 'TextColor'],
-            ['Undo', 'Redo'],
-            ['NumberedList', 'BulletedList'],
-            ['RemoveFormat', 'Source'],
-        ]
-    },
-}
