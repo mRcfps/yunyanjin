@@ -1,7 +1,8 @@
 """
-This module lists descriptions of all possible errors
-(mainly deal with 4xx errors).
+This module lists all response messages.
 """
+
+OPERATION_SUCCEED = {'success': True}
 
 WRONG_ORDER_STATUS = {'error': "订单状态错误"}
 

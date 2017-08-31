@@ -44,4 +44,4 @@ class AddToCartView(APIView):
             quantity=request.data['quantity']
         )
 
-        return Response(status=status.HTTP_201_CREATED)
+        return Response({'added': True}, status=status.HTTP_201_CREATED)

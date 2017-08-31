@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from orders.models import Order, OrderItem
 from orders.serializers import OrderSerializer
 
-import errors
+import message
 
 
 class NewOrderView(APIView):
@@ -16,7 +16,7 @@ class NewOrderView(APIView):
     def post(self, request):
         # Check if user's cart is empty
         if request.user.cart.items.count() == 0:
-            return Response(errors.EMPTY_CART,
+            return Response(message.EMPTY_CART,
                             status=status.HTTP_400_BAD_REQUEST)
 
         order = Order.objects.create(
@@ -56,13 +56,14 @@ class PayOrderView(APIView):
 
         # Handle orders of wrong status
         if order.status != Order.UNPAID:
-            return Response(errors.WRONG_ORDER_STATUS,
+            return Response(message.WRONG_ORDER_STATUS,
                             status=status.HTTP_400_BAD_REQUEST)
 
         order.status = Order.PAID
         order.save()
 
-        return Reponse(status=status.HTTP_200_OK)
+        return Reponse(message.OPERATION_SUCCEED,
+                       status=status.HTTP_200_OK)
 
 
 class CancelOrderView(APIView):
@@ -73,12 +74,13 @@ class CancelOrderView(APIView):
 
         # Handle orders of wrong status
         if order.status != Order.UNPAID:
-            return Response(errors.WRONG_ORDER_STATUS,
+            return Response(message.WRONG_ORDER_STATUS,
                             status=status.HTTP_400_BAD_REQUEST)
 
         order.delete()
 
-        return Reponse(status=status.HTTP_200_OK)
+        return Reponse(message.OPERATION_SUCCEED,
+                       status=status.HTTP_200_OK)
 
 
 class FinishOrderView(APIView):
@@ -89,10 +91,11 @@ class FinishOrderView(APIView):
 
         # Handle orders of wrong status
         if order.status != Order.DISPATCHED and order.status != Order.PAID:
-            return Response(errors.WRONG_ORDER_STATUS,
+            return Response(message.WRONG_ORDER_STATUS,
                             status=status.HTTP_400_BAD_REQUEST)
 
         order.status = Order.FINISHED
         order.save()
 
-        return Reponse(status=status.HTTP_200_OK)
+        return Reponse(message.OPERATION_SUCCEED,
+                       status=status.HTTP_200_OK)
