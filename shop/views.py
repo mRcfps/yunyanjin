@@ -7,7 +7,9 @@ from shop.models import Product, Photo, Item
 from shop.serializers import (ProductDetailSerializer,
                               ProductPhotoSerializer,
                               ItemSerializer)
-from cart.models import Cart, CartItem
+from cart.models import Cart, CartEntry
+
+import message
 
 
 class ProductDetailView(generics.RetrieveAPIView):
@@ -42,10 +44,21 @@ class AddToCartView(APIView):
     def post(self, request):
         item = Item.objects.get(id=request.data['item'])
         cart, created = Cart.objects.get_or_create(user=request.user)
-        CartItem.objects.create(
+
+        # Check if the item added is already in the cart
+        for entry in cart.entries.all():
+            if entry.item == item:
+                entry.quantity += request.data['quantity']
+                entry.save()
+                return Response(message.OPERATION_SUCCEED,
+                                status=status.HTTP_200_OK)
+
+        # Else, we create new cart entry for this item
+        CartEntry.objects.create(
             cart=cart,
             item=item,
             quantity=request.data['quantity']
         )
 
-        return Response({'added': True}, status=status.HTTP_201_CREATED)
+        return Response(message.OPERATION_SUCCEED,
+                        status=status.HTTP_200_OK)

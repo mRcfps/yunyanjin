@@ -1,31 +1,31 @@
 from rest_framework import serializers
 
-from cart.models import CartItem
+from cart.models import CartEntry
 from shop.serializers import ItemSerializer
 
 
-class CartItemSerializer(serializers.ModelSerializer):
+class CartEntrySerializer(serializers.ModelSerializer):
 
     item = ItemSerializer()
     photo = serializers.SerializerMethodField()
 
     class Meta:
-        model = CartItem
+        model = CartEntry
         fields = ('item', 'quantity', 'photo')
         read_only_field = ('item', 'photo')
 
-    def get_photo(self, cart_item):
+    def get_photo(self, cart_entry):
         request = self.context.get('request')
         try:
-            photo = cart_item.item.product.image.url
+            photo = cart_entry.item.product.image.url
             return request.build_absolute_uri(photo)
         except ValueError:
             # this product has no avatar
             return None
 
 
-class CartItemEditSerializer(serializers.ModelSerializer):
+class CartEntryEditSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = CartItem
+        model = CartEntry
         fields = ('quantity',)
