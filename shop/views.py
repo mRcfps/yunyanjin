@@ -48,7 +48,7 @@ class AddToCartView(APIView):
         # Check if the item added is already in the cart
         for entry in cart.entries.all():
             if entry.item == item:
-                entry.quantity += request.data['quantity']
+                entry.quantity += int(request.data['quantity'])
                 entry.save()
                 return Response(message.OPERATION_SUCCEED,
                                 status=status.HTTP_200_OK)
