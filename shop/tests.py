@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase, APIClient
 
 from shop.models import Product, Photo, Item
 
+
 class ShopTests(APITestCase):
 
     def setUp(self):
@@ -22,5 +23,3 @@ class ShopTests(APITestCase):
             unit='test',
             stock=100
         )
-
-    def test_
