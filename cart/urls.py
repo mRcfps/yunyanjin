@@ -4,13 +4,13 @@ from cart import views
 
 urlpatterns = [
     url(
-        r'^items/$',
-        views.ItemListView.as_view(),
-        name='item-list'
+        r'^entries/$',
+        views.EntryListView.as_view(),
+        name='entry-list'
     ),
     url(
-        r'^items/(?P<pk>\d+)/$',
-        views.ItemDetailView.as_view(),
-        name='item-detail'
+        r'^entries/(?P<pk>\d+)/$',
+        views.EntryDetailView.as_view(),
+        name='entry-detail'
     ),
 ]

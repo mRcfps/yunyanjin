@@ -11,7 +11,7 @@ class CartEntrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CartEntry
-        fields = ('item', 'quantity', 'photo')
+        fields = ('id', 'item', 'quantity', 'photo')
         read_only_field = ('item', 'photo')
 
     def get_photo(self, cart_entry):

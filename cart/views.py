@@ -4,7 +4,7 @@ from cart.models import Cart, CartEntry
 from cart.serializers import CartEntrySerializer, CartEntryEditSerializer
 
 
-class ItemListView(generics.ListAPIView):
+class EntryListView(generics.ListAPIView):
 
     serializer_class = CartEntrySerializer
 
@@ -13,7 +13,7 @@ class ItemListView(generics.ListAPIView):
         return cart.entries.all()
 
 
-class ItemDetailView(generics.RetrieveUpdateDestroyAPIView):
+class EntryDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = CartEntry.objects.all()
     serializer_class = CartEntryEditSerializer
