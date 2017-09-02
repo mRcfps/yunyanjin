@@ -11,9 +11,9 @@ class Cart(models.Model):
         verbose_name_plural = verbose_name
 
 
-class CartItem(models.Model):
+class CartEntry(models.Model):
 
-    cart = models.ForeignKey(Cart, related_name='items', verbose_name='购物车')
+    cart = models.ForeignKey(Cart, related_name='entries', verbose_name='购物车')
     item = models.ForeignKey('shop.item', verbose_name='购买项目')
     quantity = models.PositiveIntegerField(verbose_name='数量')
 
