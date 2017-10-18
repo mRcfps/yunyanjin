@@ -10,6 +10,3 @@ venv
 
 # Ignore database file
 db.sqlite3
-
-# Ignore media files
-media/
