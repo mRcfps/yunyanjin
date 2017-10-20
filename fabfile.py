@@ -23,7 +23,7 @@ def build_and_push_image():
 
 def pull_image_and_redeploy():
     """Pull the newest image from Docker Hub."""
-    running_containers = run("docker ps --format {{.Names}}")
+    running_containers = run("docker ps --format {{.Names}}").split()
     if container_name in running_containers:
         # The image already has a running container
         # So we need to remove it
