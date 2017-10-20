@@ -3,10 +3,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
-from shop.models import Product, Photo, Item
-from shop.serializers import (ProductDetailSerializer,
-                              ProductPhotoSerializer,
-                              ItemSerializer)
+from .models import Product, Photo, Item
+from .serializers import (ProductDetailSerializer,
+                          ProductPhotoSerializer,
+                          ItemSerializer)
 from cart.models import Cart, CartEntry
 
 import message

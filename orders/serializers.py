@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from orders.models import Order, OrderItem
+from .models import Order, OrderItem
 from shop.serializers import ItemSerializer
 
 

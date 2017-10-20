@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase, APIClient
 
-from shop.models import Product, Photo, Item
+from .models import Product, Photo, Item
 
 
 class ShopTests(APITestCase):

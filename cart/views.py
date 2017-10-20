@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from cart.models import Cart, CartEntry
-from cart.serializers import CartEntrySerializer, CartEntryEditSerializer
+from .models import Cart, CartEntry
+from .serializers import CartEntrySerializer, CartEntryEditSerializer
 
 
 class EntryListView(generics.ListAPIView):

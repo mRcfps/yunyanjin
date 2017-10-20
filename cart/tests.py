@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
 from shop.models import Product, Item
-from cart.models import Cart, CartEntry
+from .models import Cart, CartEntry
 
 
 class CartTests(APITestCase):
