@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^orders/', include('orders.urls', namespace='orders')),
     url(r'^admin/', admin.site.urls),
+    url(r'^docs/', include('rest_framework_docs.urls')),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
