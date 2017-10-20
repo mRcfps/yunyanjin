@@ -1,9 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-
 from rest_framework.authtoken.models import Token
 
-from shop.models import Product, Photo, Item
+from shop.models import Item, Photo, Product
 
 
 class ProductAdmin(admin.ModelAdmin):

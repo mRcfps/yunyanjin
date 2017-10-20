@@ -1,10 +1,10 @@
-from django.urls import reverse
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient
+from rest_framework.test import APIClient, APITestCase
 
-from shop.models import Product, Item
+from shop.models import Item, Product
+
 from .models import Cart, CartEntry
 
 
